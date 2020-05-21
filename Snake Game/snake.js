@@ -40,56 +40,6 @@ function init(){
 			}
 		},
 
-		updateSnake:function(){
-			//console.log("updating snake according to the direction property");
-			//check if the snake has eaten food, increase the length of the snake and 
-			//generate new food object
-			var headX = this.cells[0].x;
-			var headY = this.cells[0].y;
-
-			if(headX==food.x && headY==food.y){
-				console.log("Food eaten");
-				food = getRandomFood();
-				score++;
-
-			}
-			else
-			{
-				this.cells.pop();
-			}
-
-			
-			var nextX,nextY;
-
-			if(this.direction=="right"){
-				nextX = headX + 1;
-				nextY = headY;
-			}
-			else if(this.direction=="left"){
-				nextX = headX - 1;
-				nextY = headY;
-			}
-			else if(this.direction=="down"){
-				nextX = headX;
-				nextY = headY + 1;
-			}
-			else{
-				nextX = headX;
-				nextY = headY - 1;
-			}
-
-			this.cells.unshift({x: nextX,y:nextY});
-
-			/*Write a Logic that prevents snake from going out*/
-			var last_x = Math.round(W/cs);
-			var last_y = Math.round(H/cs);
-
-			if(this.cells[0].y<0 || this.cells[0].x < 0 || this.cells[0].x > last_x || this.cells[0].y > last_y){
-				game_over = true;
-			}
-
-		}
-
 	};
 
 	snake.createSnake();
